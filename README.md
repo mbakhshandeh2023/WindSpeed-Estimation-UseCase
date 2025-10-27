@@ -15,7 +15,7 @@ You can access and run them directly on **DesignSafe** by clicking the link belo
 
 | **Scope** | **Notebook** |
 |------------|---------------|
-| Interpolating and converting hurricane wind field data | [Wind_Speed_Estimation.ipynb](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) <br> [![Open in DesignSafe](https://img.shields.io/badge/Open%20in%20DesignSafe-blue?logo=appveyor)](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) |
+| Interpolating and converting hurricane wind field data | [Wind_Speed_Estimation.ipynb](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) <br> [![Open in DesignSafe](https://raw.githubusercontent.com/geoelements/LearnMPM/main/DesignSafe-Badge.svg)](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) |
 
 
 ## DesignSafe Resources
@@ -61,8 +61,7 @@ pip install numpy pandas scipy rasterio folium branca contextily pyproj matplotl
 5. Outputs (CSV files and HTML maps) will appear in the `Interpolation&ConversionOutput/` directory.
 
 **Run in DesignSafe:**  
-[![Open in DesignSafe](https://img.shields.io/badge/Launch%20JupyterHub-blue?logo=jupyter)](https://www.designsafe-ci.org/rw/workspace/jupyter/)
-
+[![Open in DesignSafe](https://raw.githubusercontent.com/geoelements/LearnMPM/main/DesignSafe-Badge.svg)](https://www.designsafe-ci.org/rw/workspace/jupyter/)
 
 ## Background
 
