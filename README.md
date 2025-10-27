@@ -1,94 +1,72 @@
-## Wind Speed Estimation and Conversion UseCase
+## Wind Speed Estimation and Conversion Usecase
 
 **Authors:** Mohammad Bakhshandeh – Florida Institute of Technology  
 Jean-Paul Pinelli – Florida Institute of Technology  
 Steven Cocke – Florida State University  
 
-**Key Words:** hurricane wind field, interpolation, exposure correction, Jupyter Notebook, DesignSafe, Florida
-
----
-
-## Overview
-
-The *Wind Speed Estimation and Conversion* Jupyter Notebook provides a flexible and reproducible framework for assigning wind speeds to property locations in Florida that were damaged during hurricanes. The notebook accepts wind field input data in any grid format and for different exposure types (marine, open terrain, or urban) and averaging times (3-second gusts, 1-minute sustained, or 10-minute averages). It can also convert wind speeds between heights using standard wind engineering relationships.
-
-The tool performs three major functions:
-
-1. **Linear interpolation** of gridded wind data to property coordinates using spatial interpolation methods.  
-2. **Conversion** of wind speeds between exposure types, time averages, and reference heights using empirical and analytical relationships.  
-3. **Terrain adjustment**, applying real-world corrections based on surface roughness and coastal proximity, derived from GeoTIFF data layers.
-
-This notebook supports both research and operational needs for catastrophe and vulnerability modeling, integrating datasets from sources such as ARA/NIST and DesignSafe Reconnaissance Portal.
-
----
-
-## Workflow
-
-The workflow is structured as follows:
-
-1. **Data Preparation:** Import gridded hurricane wind field data, property location files (latitude and longitude), and terrain rasters (`rough_2022.tif`, `distance_2022.tif`).  
-2. **Interpolation:** Apply deterministic linear interpolation (`scipy.interpolate.griddata`) to estimate wind speeds at each property location.  
-3. **Conversion:** Adjust interpolated values for time averaging (e.g., 1-min to 3-sec gust), exposure type (marine to urban), and height differences using gust factor binaries (`gfac_3sec.dat`, `gfac2_3sec.dat`, `gfacm.dat`, `gfaco.dat`).  
-4. **Terrain Adjustment:** Apply logarithmic scaling to account for local surface roughness and coastal effects (e.g., 15% reduction in urban areas, 10–15% increase near coastlines).  
-5. **Output and Visualization:** Export adjusted results (`interpolated.csv`, `wind_speeds_conversion.csv`) and generate static and interactive maps (Matplotlib and Folium).
-
----
+**Keywords:** hurricane, wind field, interpolation, conversion, exposure correction, Jupyter Notebook, DesignSafe, Florida
 
 ## Resources
 
-The following resources are available to reproduce and explore this use case:
+### Jupyter Notebooks
 
-- **Jupyter Notebook:** `Wind_Speed_Estimation.ipynb`  
-- **Configuration File:** `config1.txt` – defines input/output paths, exposure types, and time intervals  
-- **Input Data:** hurricane wind fields (ARA/NIST datasets or user-provided CSVs)  
-- **Terrain Data:** roughness and distance rasters provided by Dr. Steven Cocke (Florida State University)  
-- **Outputs:** CSV tables of interpolated and terrain-adjusted wind speeds, and interactive maps  
+The following Jupyter notebooks are available to facilitate the analysis of each case.  
+You can access and run them directly on **DesignSafe** by clicking the link below:
 
-**DesignSafe Publication:** [10.17603/ds2-kcxr-2683](https://doi.org/10.17603/ds2-kcxr-2683)  
+| **Scope** | **Notebook** |
+|------------|---------------|
+| Interpolating and converting hurricane wind field data | [Wind_Speed_Estimation.ipynb](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) <br> [![Open in DesignSafe](https://img.shields.io/badge/Open%20in%20DesignSafe-blue?logo=appveyor)](https://www.designsafe-ci.org/data/browser/public/designsafe.storage.published/PRJ-5778) |
 
----
+
+## DesignSafe Resources
+
+The following DesignSafe resources were used in developing this Use Case:
+
+- [Jupyter notebook on DesignSafe JupyterHub](https://www.designsafe-ci.org/rw/workspace/jupyter/)  
+- [DesignSafe Publication: Wind Speed Estimation and Conversion (DOI: 10.17603/ds2-kcxr-2683)](https://doi.org/10.17603/ds2-kcxr-2683)  
+- [ARA / NIST Hurricane Wind Field Datasets]
+ 
+
+## Description
+
+The purpose of this Jupyter Notebook is to interpolate and convert gridded hurricane wind field data to property-level locations. The model assigns wind speeds for each site by combining spatial interpolation, exposure conversion, and terrain adjustment. It is suitable for hurricane damage analysis, risk modeling, and catastrophe model calibration.
+
+Key functionalities include:
+
+- **Interpolation:** Derives property-level wind speeds from gridded ARA/NIST hurricane data.  
+- **Conversion:** Transforms wind speeds between averaging times (3-sec gusts, 1-min sustained) and exposure categories (marine, open, urban).  
+- **Terrain Adjustment:** Applies roughness-based corrections and coastal modifiers using GeoTIFF rasters.  
+- **Visualization:** Generates interactive Folium-based maps and static Matplotlib plots for analysis and validation.
 
 ## Implementation
 
 ### System Requirements
-- Python 3.8 or higher  
-- Jupyter Notebook environment  
-- Required libraries:
-  ```bash
-  pip install numpy pandas scipy rasterio folium branca contextily pyproj matplotlib
-  ```
 
-### How to Run
-1. Clone the repository or download the notebook files.  
-2. Update file paths in `config1.txt` as needed.  
-3. Run all notebook cells in order.  
-4. Review generated outputs and visualizations.
+- **Python 3.8+**  
+- **Jupyter Notebook environment** (DesignSafe JupyterHub or local)  
 
----
-
-## Using Jupyter Notebooks
-
-You can run the notebook locally or through DesignSafe’s JupyterHub service.
-
-**Accessing on DesignSafe:**
-1. Log in to [DesignSafe-CI.org](https://www.designsafe-ci.org).  
-2. Navigate to **JupyterHub** under *Workspace → Tools → Jupyter*.  
-3. Locate the project under *Published Data → PRJ-5778 – Wind Speed Estimation and Conversion*.  
-4. Open `Wind_Speed_Estimation.ipynb` and execute the cells to reproduce the analysis.
-
-**Running Locally:**
+Install dependencies before running:
 ```bash
-git clone https://github.com/<your-username>/WindSpeed-Estimation-UseCase.git
-jupyter notebook Wind_Speed_Estimation.ipynb
+pip install numpy pandas scipy rasterio folium branca contextily pyproj matplotlib
 ```
 
----
+### Steps to Run
+1. Download or clone the repository:  
+   ```bash
+   git clone https://github.com/mbakhshandeh2023/WindSpeed-Estimation-UseCase.git
+   ```
+2. Open the Jupyter notebook (`Wind_Speed_Estimation.ipynb`).  
+3. Update file paths in `config1.txt` as needed.  
+4. Run all notebook cells sequentially to perform interpolation, conversion, and mapping.  
+5. Outputs (CSV files and HTML maps) will appear in the `Interpolation&ConversionOutput/` directory.
+
+**Run in DesignSafe:**  
+[![Open in DesignSafe](https://img.shields.io/badge/Launch%20JupyterHub-blue?logo=jupyter)](https://www.designsafe-ci.org/rw/workspace/jupyter/)
+
 
 ## Background
 
-This Jupyter Notebook was developed as part of ongoing research at the Florida Institute of Technology and Florida State University to improve hurricane wind field estimation and terrain adjustment modeling. The methodology integrates validated empirical relationships from wind engineering and boundary-layer meteorology, using open and reproducible computational tools.
-
----
+This project was developed under the Florida Institute of Technology and Florida State University collaboration to advance wind hazard and vulnerability modeling in Florida. It integrates established wind engineering relationships and geospatial analysis techniques into an accessible, reproducible Jupyter framework.
 
 ## Citation and Licensing
 
@@ -99,4 +77,4 @@ If you use this repository, please cite:
 **License:** BSD 3-Clause License  
 
 **Acknowledgment:**  
-This research was supported by the **National Science Foundation (NSF)** through **Award No. 2022469**, within the **NHERI DesignSafe Cyberinfrastructure** program. The findings and opinions are those of the authors and do not necessarily represent the views of the NSF.
+This research was supported by the **National Science Foundation (NSF)** under **Award No. 2022469**, through the **NHERI DesignSafe Cyberinfrastructure**. The opinions and conclusions expressed are those of the authors and do not necessarily reflect the views of the NSF.
