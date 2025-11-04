@@ -86,7 +86,7 @@ This method generates a static map where data points are displayed as scatter po
 
 This method creates an interactive web map that can be embedded in Jupyter notebooks or saved as a standalone HTML file. Wind speed data points are represented as color-coded circle markers using a sequential YlOrRd colormap scaled to the range of wind speeds. Each marker features a clickable popup providing detailed, location-specific information, including geographic coordinates, ActualT_3sg, z0_raster, and dist_raster, aiding in the interpretation of local wind conditions. Additional interactive features such as a color legend, minimap overview, and layer control widgets enhance usability. The map can be saved as an HTML file for viewing in any web browser or displayed directly within a Jupyter Notebook.
 
-   <img width="467" height="302" alt="image" src="https://github.com/user-attachments/assets/1315d3cc-1fdd-4c32-8f66-6551c51f73a7" />
+   <img width="750" height="550" alt="image" src="https://github.com/user-attachments/assets/1315d3cc-1fdd-4c32-8f66-6551c51f73a7" />
    
 > **Figure 1.** An Example of Interactive Web Map with Folium
 
