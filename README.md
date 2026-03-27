@@ -1,8 +1,10 @@
-## Wind Speed Estimation and Conversion Usecase
 
-### Mohammad Bakhshandeh – Florida Institute of Technology  
-### Jean-Paul Pinelli – Florida Institute of Technology  
-### Steven Cocke – Florida State University  
+# Wind Speed Estimation and Conversion Use Case
+
+**Bakhshandeh, M. – Florida Institute of Technology**<br>
+**Pinelli, J-P. – Professor - Florida Institute of Technology**<br>
+**Cocke, Steven – Professor - Florida State University**<br> 
+ 
 
 **Keywords:** hurricane, wind field, interpolation, conversion, exposure correction, Jupyter Notebook, DesignSafe, Florida
 
@@ -14,7 +16,7 @@ Since 2017, Applied Research Associates (ARA), under contract with the National 
 
 The workflow reads the wind-field data, performs interpolation to estimate winds at each property coordinate, and applies terrain adjustments to compute actual terrain-level wind speeds. For instance, given any hurricane dataset (e.g., Hurricane Michael), the notebook interpolates ARA’s 10-m open-terrain winds to specific property locations and modifies them based on local roughness and coastal proximity. The result is a spatially resolved dataset of adjusted 10-m wind speeds suitable for exposure modeling and vulnerability assessment.
 
-Key functionalities include:
+**Key steps:** 
 
 - **Interpolation:** Derives property-level wind speeds from gridded ARA/NIST hurricane data.  
 - **Conversion:** Transforms wind speeds between averaging times (3-sec gusts, 1-min sustained) and exposure categories (marine, open, urban).  
